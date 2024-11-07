@@ -11,7 +11,7 @@ def ingest_data(data_object_name='', data_folder='./data'):
     s3_secret_key = environ.get('AWS_SECRET_ACCESS_KEY')
     s3_bucket_name = environ.get('AWS_S3_BUCKET')
     data_object_name = data_object_name or environ.get(
-        'data_object_name', 'live-data.csv'
+        'data_object_name'
     )
 
     print(f'Downloading data "{data_object_name}" '
@@ -25,8 +25,8 @@ def ingest_data(data_object_name='', data_folder='./data'):
 
     s3_client.download_file(
         s3_bucket_name,
-        data_object_name,
-        f'{data_folder}/data.csv'
+        f'data/{data_object_name}',
+        f'{data_folder}/raw_data.csv'
     )
     print('Finished data ingestion.')
 
